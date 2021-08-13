@@ -480,7 +480,7 @@ func (tkn *Tokenizer) skipBlank() {
 func (tkn *Tokenizer) scanIdentifier(firstByte byte) (int, []byte) {
 	buffer := &bytes2.Buffer{}
 	buffer.WriteByte(firstByte)
-	for isLetter(tkn.lastChar) || isDigit(tkn.lastChar) {
+	for isLetter(tkn.lastChar) || isDigit(tkn.lastChar) || tkn.lastChar == '.' {
 		buffer.WriteByte(byte(tkn.lastChar))
 		tkn.next()
 	}
